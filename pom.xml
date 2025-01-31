@@ -68,7 +68,7 @@
                 <artifactId>rewrite-maven-plugin</artifactId>
                 <version>5.47.3</version>
                 <configuration>
-                    <configLocation>rewrite.yml</configLocation>
+                    <configLocation>../rewrite.yml</configLocation>
                     <activeRecipes>
                         <recipe>com.kairosds.challenge.Recipe</recipe>
                     </activeRecipes>
