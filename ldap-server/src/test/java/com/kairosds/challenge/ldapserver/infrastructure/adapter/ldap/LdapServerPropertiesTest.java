@@ -7,6 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 
+import ch.qos.logback.core.testUtil.RandomUtil;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -14,19 +15,20 @@ import static org.assertj.core.api.Assertions.assertThat;
 @EnableConfigurationProperties(LdapServerProperties.class)
 class LdapServerPropertiesTests {
 
+	private static final Integer LDAP_PORT = RandomUtil.getRandomServerPort();
 	private @Autowired LdapServerProperties properties;
 
 	@DynamicPropertySource
 	static void properties(DynamicPropertyRegistry registry) {
 		registry.add("ldap.base", () -> "dc=example,dc=com");
-		registry.add("ldap.port", () -> 389);
+		registry.add("ldap.port", () -> LDAP_PORT);
 		registry.add("ldap.password", () -> "secret");
 	}
 
 	@Test
-	void propertiesAreLoadedCorrectly() {
+	void testPropertiesLoadedCorrectly() {
 		assertThat(properties.base()).isEqualTo("dc=example,dc=com");
-		assertThat(properties.port()).isEqualTo(389);
+		assertThat(properties.port()).isEqualTo(LDAP_PORT);
 		assertThat(properties.password()).isEqualTo("secret");
 	}
 
