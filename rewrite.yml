@@ -10,6 +10,7 @@ recipeList:
   - org.openrewrite.java.format.TypecastParenPad
   - org.openrewrite.java.migrate.UpgradeBuildToJava21
   - org.openrewrite.java.spring.boot3.SpringBoot3BestPractices
+  - org.openrewrite.java.migrate.lombok.LombokBestPractices
   - org.openrewrite.java.testing.assertj.JUnitToAssertj
   - org.openrewrite.java.testing.junit5.JUnit5BestPractices
   - org.openrewrite.staticanalysis.JavaApiBestPractices
