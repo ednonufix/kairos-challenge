@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: oauth-server
+  cloud:
+    config:
+      enabled: false
+  profiles:
+    active: test
