@@ -10,7 +10,7 @@ permissions:
   actions: read
   checks: write
 jobs:
-  ms-auth:
+  kairos-challenge:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
