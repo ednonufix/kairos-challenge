@@ -17,6 +17,7 @@
     </properties>
     <modules>
         <module>config-server</module>
+        <module>ldap-server</module>
     </modules>
     <dependencies>
         <!-- Spring Boot Actuator -->
