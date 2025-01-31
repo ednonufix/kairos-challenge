@@ -19,6 +19,7 @@
     <modules>
         <module>config-server</module>
         <module>ldap-server</module>
+        <module>oauth-server</module>
     </modules>
     <dependencies>
         <!-- Spring Boot Actuator -->
