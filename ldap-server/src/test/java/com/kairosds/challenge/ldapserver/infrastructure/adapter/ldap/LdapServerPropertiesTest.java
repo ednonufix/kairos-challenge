@@ -26,7 +26,7 @@ class LdapServerPropertiesTests {
 	}
 
 	@Test
-	void testPropertiesLoadedCorrectly() {
+	void propertiesLoadedCorrectly() {
 		assertThat(properties.base()).isEqualTo("dc=example,dc=com");
 		assertThat(properties.port()).isEqualTo(LDAP_PORT);
 		assertThat(properties.password()).isEqualTo("secret");
