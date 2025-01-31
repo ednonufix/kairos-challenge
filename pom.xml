@@ -20,6 +20,7 @@
         <module>config-server</module>
         <module>ldap-server</module>
         <module>oauth-server</module>
+        <module>prices-api</module>
     </modules>
     <dependencies>
         <!-- Spring Boot Actuator -->
