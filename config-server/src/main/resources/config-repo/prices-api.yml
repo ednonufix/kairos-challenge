@@ -1,0 +1,30 @@
+spring:
+  jpa:
+    show-sql: true
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:9000
+          jwk-set-uri: http://localhost:9000/oauth2/jwks
+          authority-prefix: ""
+      client:
+        registration:
+          prices-api:
+            provider: spring
+            client-id: prices-api
+            client-secret: '{cipher}f67a791d52e8b7c1f0cf2fdb55f6a0ca6e76ce3fc27ff703c248bd5441b457ae'
+            client-name: prices-api
+            authorization-grant-type: authorization_code
+            redirect-uri: "http://localhost:8080/v1/authorized"
+            scope: openid, profile
+        provider:
+          spring:
+            issuer-uri: http://localhost:9000
+oauth2:
+  client:
+    client-id: ${spring.security.oauth2.client.registration.prices-api.client-id}
+    client-secret: ${spring.security.oauth2.client.registration.prices-api.client-secret}
+    grant-type: ${spring.security.oauth2.client.registration.prices-api.authorization-grant-type}
+    auth-server-url: ${spring.security.oauth2.client.provider.spring.issuer-uri}
+    redirect-uri: ${spring.security.oauth2.client.registration.prices-api.redirect-uri}
