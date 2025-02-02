@@ -13,7 +13,7 @@ import io.swagger.v3.oas.models.security.SecurityScheme;
 public class OpenApiConfig {
 
 	@Bean
-	public OpenAPI customOpenAPI() {
+	OpenAPI customOpenAPI() {
 		var openapi = new OpenAPI().info(new Info().title("Kairós Challenge API").version("1.0.0"))
 			.addSecurityItem(new SecurityRequirement().addList("bearer-jwt"));
 		openapi.setComponents(new Components().addSecuritySchemes("bearer-jwt", new SecurityScheme()
