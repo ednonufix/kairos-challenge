@@ -36,6 +36,17 @@ mail: bob@kairosds.com
 uid: bob
 userPassword: $2a$10$7HNMA1Pj.RRqA4/5Q0jCve0aEl7YV0BWWUuNE6XurayAO9BJ6ppHK
 
+dn: uid=edwin,ou=people,dc=kairosds,dc=com
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+cn: Edwin Cambridge
+sn: Cambridge
+mail: edwin@kairosds.com
+uid: edwin
+userPassword: $2a$10$Im8iTtNTxfGSo8rW.rQpiOHIdCwUnZCMHZ04hVAx6Uo9oY1bkD0XW
+
 dn: cn=users,ou=groups,dc=kairosds,dc=com
 objectclass: top
 objectclass: groupOfUniqueNames
@@ -43,6 +54,13 @@ cn: users
 ou: users
 uniqueMember: uid=ben,ou=people,dc=kairosds,dc=com
 uniqueMember: uid=bob,ou=people,dc=kairosds,dc=com
+
+dn: cn=financial,ou=groups,dc=kairosds,dc=com
+objectclass: top
+objectclass: groupOfUniqueNames
+cn: financial
+ou: financial
+uniqueMember: uid=edwin,ou=people,dc=kairosds,dc=com
 
 dn: cn=managers,ou=groups,dc=kairosds,dc=com
 objectclass: top
