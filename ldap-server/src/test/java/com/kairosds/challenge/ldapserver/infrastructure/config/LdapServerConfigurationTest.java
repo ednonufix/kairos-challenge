@@ -10,6 +10,7 @@ import java.nio.file.Path;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
@@ -21,7 +22,7 @@ class LdapServerConfigurationTest {
 
 	private @Mock LdapServerProperties properties;
 	private @Mock Resource schema;
-	private LdapServerConfiguration ldapServerConfiguration;
+	private @InjectMocks LdapServerConfiguration ldapServerConfiguration;
 
 	@BeforeEach
 	void setUp() throws IOException {
@@ -29,7 +30,6 @@ class LdapServerConfigurationTest {
 		when(properties.base()).thenReturn("dc=example,dc=com");
 		when(properties.password()).thenReturn("secret");
 		when(schema.getFile()).thenReturn(Path.of("src/test/resources/schema.ldif").toFile());
-		ldapServerConfiguration = new LdapServerConfiguration(properties, schema);
 	}
 
 	@Test
