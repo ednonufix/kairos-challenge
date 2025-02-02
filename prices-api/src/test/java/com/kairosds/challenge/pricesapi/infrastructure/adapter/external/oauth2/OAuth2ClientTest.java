@@ -1,28 +1,21 @@
 package com.kairosds.challenge.pricesapi.infrastructure.adapter.external.oauth2;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.boot.test.context.SpringBootTest;
+
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
+import static org.assertj.core.api.Assertions.assertThat;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.Mockito.when;
-
-@ExtendWith(MockitoExtension.class)
+@SpringBootTest(classes = OAuth2Client.class)
+@EnableConfigurationProperties(OAuth2ClientProperties.class)
 class OAuth2ClientTest {
 
-	private @Mock OAuth2ClientProperties properties;
-	private @InjectMocks OAuth2Client client;
+	private @Autowired OAuth2Client client;
 
 	@Test
-	void testOauth2RestClient() {
-
-		when(properties.clientId()).thenReturn("clientId");
-		when(properties.clientSecret()).thenReturn("clientSecret");
-		when(properties.authServerUrl()).thenReturn("authServerUrl");
-
-		assertNotNull(client.oauth2RestClient());
+	void oauth2RestClient() {
+		assertThat(client.oauth2RestClient()).isNotNull();
 	}
 
 }
