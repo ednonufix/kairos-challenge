@@ -6,3 +6,10 @@ spring:
       enabled: false
   profiles:
     active: test
+oauth2:
+  client:
+    client-id: clientId
+    client-secret: secret
+    grant-type: authorization_code
+    auth-server-url: http://localhost:9000
+    redirect-uri: http://localhost:8080/authorized
