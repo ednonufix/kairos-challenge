@@ -5,6 +5,7 @@ import com.kairosds.challenge.pricesapi.infrastructure.adapter.rest.response.Pri
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,6 +20,7 @@ import jakarta.validation.Valid;
 @RequestMapping("/v1")
 public interface PriceViewRestUI {
 
+	@PreAuthorize("hasAuthority('ROLE_USERS')")
 	@ResponseStatus(HttpStatus.OK)
 	@PostMapping("/price")
 	ResponseEntity<PriceViewFindResponse> findPrice(@Valid @RequestBody PriceViewFindRequest request);

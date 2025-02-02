@@ -18,6 +18,7 @@ spring:
           issuer-uri: http://localhost:9000
           jwk-set-uri: http://localhost:9000/oauth2/jwks
           authority-prefix: ""
+          authorities-claim-name: authorities
       client:
         registration:
           prices-api:
