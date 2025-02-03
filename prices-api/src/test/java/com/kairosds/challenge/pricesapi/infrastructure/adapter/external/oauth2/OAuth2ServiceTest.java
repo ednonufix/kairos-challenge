@@ -41,7 +41,7 @@ class OAuth2ServiceTest {
 	}
 
 	@Test
-	void testAuthenticationDetail() throws IOException {
+	void authenticationDetail() throws IOException {
 
 		var jsonResponse = mapper.readValue(oauth2JsonResource.getInputStream(), AuthenticationDetail.class);
 
@@ -57,20 +57,20 @@ class OAuth2ServiceTest {
 	}
 
 	@Test
-	void testAuthenticationDetailClientError() {
+	void authenticationDetailClientError() {
 
 		stubFor(post(urlEqualTo("/oauth2/token"))
-				.willReturn(aResponse()
-						.withStatus(403)
-						.withHeader("Content-Type", "text/plain")
-						.withBody("Forbidden")));
+			.willReturn(aResponse()
+				.withStatus(403)
+				.withHeader("Content-Type", "text/plain")
+				.withBody("Forbidden")));
 
 		assertThatThrownBy(() -> service.authenticationDetail("code"))
-				.isInstanceOf(RestClientResponseException.class)
-				.hasMessage("Error occurred")
-				.hasFieldOrPropertyWithValue("statusCode", HttpStatusCode.valueOf(403))
-				.hasFieldOrPropertyWithValue("statusText", "Forbidden")
-				.hasFieldOrPropertyWithValue("responseBody", "Forbidden".getBytes(StandardCharsets.UTF_8));
+			.isInstanceOf(RestClientResponseException.class)
+			.hasMessage("Error occurred")
+			.hasFieldOrPropertyWithValue("statusCode", HttpStatusCode.valueOf(403))
+			.hasFieldOrPropertyWithValue("statusText", "Forbidden")
+			.hasFieldOrPropertyWithValue("responseBody", "Forbidden".getBytes(StandardCharsets.UTF_8));
 
 	}
 

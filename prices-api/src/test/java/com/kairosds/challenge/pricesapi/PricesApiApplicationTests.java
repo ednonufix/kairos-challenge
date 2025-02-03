@@ -9,7 +9,6 @@ import org.springframework.test.context.bean.override.mockito.MockitoBean;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.mockStatic;
@@ -26,11 +25,11 @@ class PricesApiApplicationTests {
 	}
 
 	@Test
-	void testMainWithMock() {
+	void mainWithMock() {
 		try (MockedStatic<SpringApplication> springApplicationMock = mockStatic(SpringApplication.class)) {
 			var mockContext = mock(ConfigurableApplicationContext.class);
 			springApplicationMock.when(() -> SpringApplication.run(PricesApiApplication.class, new String[]{}))
-					.thenReturn(mockContext);
+				.thenReturn(mockContext);
 
 			PricesApiApplication.main(new String[]{});
 
