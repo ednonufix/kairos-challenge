@@ -6,7 +6,7 @@ import com.kairosds.challenge.pricesapi.infrastructure.adapter.rest.mapper.Price
 import com.kairosds.challenge.pricesapi.infrastructure.adapter.rest.request.PriceViewFindRequest;
 import com.kairosds.challenge.pricesapi.infrastructure.adapter.rest.response.PriceViewFindResponse;
 import com.kairosds.challenge.pricesapi.infrastructure.adapter.rest.ui.PriceViewRestUI;
-import com.kairosds.challenge.pricesapi.infrastructure.config.SecurityConfig;
+import com.kairosds.challenge.pricesapi.infrastructure.security.SecurityConfig;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;

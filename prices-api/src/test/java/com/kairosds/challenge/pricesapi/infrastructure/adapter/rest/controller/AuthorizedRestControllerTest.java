@@ -3,7 +3,7 @@ package com.kairosds.challenge.pricesapi.infrastructure.adapter.rest.controller;
 import com.kairosds.challenge.pricesapi.application.query.dto.AuthenticationDetail;
 import com.kairosds.challenge.pricesapi.application.query.handle.AuthenticationQueryHandler;
 import com.kairosds.challenge.pricesapi.infrastructure.adapter.rest.ui.AuthorizedRestUI;
-import com.kairosds.challenge.pricesapi.infrastructure.config.SecurityConfig;
+import com.kairosds.challenge.pricesapi.infrastructure.security.SecurityConfig;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
