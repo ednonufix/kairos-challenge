@@ -19,6 +19,7 @@ The project is a pricing API developed in Java using Spring Boot. The main techn
 - **API Documentation**: Swagger (OpenAPI)
 - **Security**: Spring Security
 - **Architecture**: REST-based controllers
+- **Code formatting**: OpenRewrite
 
 The project includes multiple layers, such as REST controllers, services, and mappers to handle API requests and responses.
 
