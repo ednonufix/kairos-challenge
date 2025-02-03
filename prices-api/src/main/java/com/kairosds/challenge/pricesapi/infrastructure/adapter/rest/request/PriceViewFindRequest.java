@@ -6,9 +6,12 @@ import com.kairosds.challenge.pricesapi.infrastructure.adapter.rest.mapper.Price
 import jakarta.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
-public record PriceViewFindRequest(@NotNull Long productId,
-												@NotNull Long brandId,
-												@NotNull LocalDateTime applicationDate) {
+import io.swagger.v3.oas.annotations.media.Schema;
+
+public record PriceViewFindRequest(
+		@NotNull @Schema(example = "35455") Long productId,
+		@NotNull @Schema(example = "1") Long brandId,
+		@NotNull @Schema(example = "2020-06-16T21:00:00") LocalDateTime applicationDate) {
 	public PriceViewFindQuery toQuery() {
 		return PriceViewRequestMapper.INSTANCE.toQuery(this);
 	}
