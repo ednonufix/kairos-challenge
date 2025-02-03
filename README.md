@@ -20,6 +20,7 @@ The project is a pricing API developed in Java using Spring Boot. The main techn
 - **Security**: Spring Security
 - **Architecture**: REST-based controllers
 - **Code formatting**: OpenRewrite
+- **CI/CD**: GitHub Actions
 
 The project includes multiple layers, such as REST controllers, services, and mappers to handle API requests and responses.
 
@@ -107,4 +108,10 @@ mvn test
 ### API Documentation
 
 The API documentation is available at: [Swagger UI](http://localhost:8080/swagger-ui/index.html)
+
+### GitHub Actions
+
+GitHub Actions is used to automate the build and deployment process. The CI/CD pipeline runs on every push and pull request to ensure code quality and stability.
+
+To check the latest build status, visit the [GitHub Actions page](https://github.com/ednonufix/kairos-challenge/actions).
 
