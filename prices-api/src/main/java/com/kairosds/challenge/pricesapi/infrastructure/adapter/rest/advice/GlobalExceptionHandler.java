@@ -17,25 +17,25 @@ import lombok.extern.slf4j.Slf4j;
 public class GlobalExceptionHandler {
 
 	@ExceptionHandler(MethodArgumentNotValidException.class)
-	public ResponseEntity<ErrorDetail> handleNameAlreadyBoundException(MethodArgumentNotValidException ex) {
+	public ResponseEntity<ErrorDetail> handle(MethodArgumentNotValidException ex) {
 		var errordetail = new ErrorDetail("Invalid json", ex.getMessage(), LocalDateTime.now());
-		return ResponseEntity.status(HttpStatus.CONFLICT).body(errordetail);
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errordetail);
 	}
 
 	@ExceptionHandler(HttpMessageNotReadableException.class)
-	public ResponseEntity<ErrorDetail> handleMethodArgumentConversionNotSupportedException(HttpMessageNotReadableException ex) {
+	public ResponseEntity<ErrorDetail> handle(HttpMessageNotReadableException ex) {
 		var errordetail = new ErrorDetail("Malformed json", ex.getMessage(), LocalDateTime.now());
-		return ResponseEntity.status(HttpStatus.CONFLICT).body(errordetail);
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errordetail);
 	}
 
 	@ExceptionHandler(AuthorizationDeniedException.class)
-	public ResponseEntity<ErrorDetail> handleAuthorizationDeniedException(AuthorizationDeniedException ex) {
+	public ResponseEntity<ErrorDetail> handle(AuthorizationDeniedException ex) {
 		var errordetail = new ErrorDetail("Authorization denied", ex.getMessage(), LocalDateTime.now());
 		return ResponseEntity.status(HttpStatus.FORBIDDEN).body(errordetail);
 	}
 
 	@ExceptionHandler(Exception.class)
-	public ResponseEntity<ErrorDetail> handleException(Exception ex) {
+	public ResponseEntity<ErrorDetail> handle(Exception ex) {
 		var errordetail = new ErrorDetail("Error", ex.getMessage(), LocalDateTime.now());
 		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errordetail);
 	}
