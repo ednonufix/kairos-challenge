@@ -1,6 +1,7 @@
 package com.kairosds.challenge.pricesapi.infrastructure.adapter.rest.ui;
 
 import com.kairosds.challenge.pricesapi.application.query.dto.AuthenticationDetail;
+import io.swagger.v3.oas.annotations.Hidden;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+@Hidden
 @RestController
 @RequestMapping("/v1")
 public interface AuthorizedRestUI {
