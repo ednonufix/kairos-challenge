@@ -73,7 +73,7 @@ class PriceViewRestControllerTest {
 		           }
 		           """;
 		mockMvc.perform(post(URL).content(malformedJson).contentType(MediaType.APPLICATION_JSON)
-			.with(addAuthority("ROLE_USERS"))).andExpect(status().is(HttpStatus.CONFLICT.value()));
+			.with(addAuthority("ROLE_USERS"))).andExpect(status().is(HttpStatus.BAD_REQUEST.value()));
 	}
 
 	@Test
@@ -86,7 +86,7 @@ class PriceViewRestControllerTest {
 		           }
 		           """;
 		mockMvc.perform(post(URL).content(malformedJson).contentType(MediaType.APPLICATION_JSON)
-			.with(addAuthority("ROLE_USERS"))).andExpect(status().is(HttpStatus.CONFLICT.value()));
+			.with(addAuthority("ROLE_USERS"))).andExpect(status().is(HttpStatus.BAD_REQUEST.value()));
 	}
 
 	private static SecurityMockMvcRequestPostProcessors.JwtRequestPostProcessor addAuthority(String role) {

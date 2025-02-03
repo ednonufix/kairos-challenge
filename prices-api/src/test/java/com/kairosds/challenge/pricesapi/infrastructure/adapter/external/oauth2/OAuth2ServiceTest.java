@@ -9,8 +9,10 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.cloud.contract.wiremock.AutoConfigureWireMock;
 import org.springframework.core.io.Resource;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
+import org.springframework.web.client.RestClientResponseException;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -22,6 +24,7 @@ import static com.github.tomakehurst.wiremock.client.WireMock.post;
 import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @SpringBootTest(classes = {OAuth2Service.class, OAuth2Client.class, JacksonAutoConfiguration.class})
 @EnableConfigurationProperties(OAuth2ClientProperties.class)
@@ -38,7 +41,7 @@ class OAuth2ServiceTest {
 	}
 
 	@Test
-	void authenticationDetail() throws IOException {
+	void testAuthenticationDetail() throws IOException {
 
 		var jsonResponse = mapper.readValue(oauth2JsonResource.getInputStream(), AuthenticationDetail.class);
 
@@ -51,6 +54,24 @@ class OAuth2ServiceTest {
 		var result = service.authenticationDetail("code");
 
 		assertThat(result).isEqualTo(jsonResponse);
+	}
+
+	@Test
+	void testAuthenticationDetailClientError() {
+
+		stubFor(post(urlEqualTo("/oauth2/token"))
+				.willReturn(aResponse()
+						.withStatus(403)
+						.withHeader("Content-Type", "text/plain")
+						.withBody("Forbidden")));
+
+		assertThatThrownBy(() -> service.authenticationDetail("code"))
+				.isInstanceOf(RestClientResponseException.class)
+				.hasMessage("Error occurred")
+				.hasFieldOrPropertyWithValue("statusCode", HttpStatusCode.valueOf(403))
+				.hasFieldOrPropertyWithValue("statusText", "Forbidden")
+				.hasFieldOrPropertyWithValue("responseBody", "Forbidden".getBytes(StandardCharsets.UTF_8));
+
 	}
 
 }
