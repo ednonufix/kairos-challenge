@@ -14,7 +14,7 @@ The project is a pricing API developed in Java using Spring Boot. The main techn
 - **Framework**: Spring Boot
 - **Dependency Management**: Maven
 - **Database**: SQL
-- **User Database**: LDAP
+- **User Database**: LDAP(UnboundID)
 - **Validation**: Jakarta Validation
 - **API Documentation**: Swagger (OpenAPI)
 - **Security**: Spring Security
